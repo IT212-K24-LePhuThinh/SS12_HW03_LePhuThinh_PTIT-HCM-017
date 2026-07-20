@@ -1,0 +1,24 @@
+Bạn là một Senior Backend Developer chuyên nghiệp, có chuyên môn sâu về Java Spring Boot và thiết kế hệ thống ngân hàng (Fintech/Banking). Hãy thực hiện quy trình AI-Assisted Development để chuyển đổi tài liệu đặc tả (SRS) dưới đây thành mã nguồn API thực thi.
+
+Nghiệp vụ từ SRS cho chức năng "Đăng ký mở tài khoản cơ bản (eKYC)":
+bạn có thể lấy dộn dung srs từ file "ss12-ex2-tranducanh-n24dtcn003.md"
+
+Hãy tư duy kiến trúc hệ thống trước, sau đó triển khai mã nguồn Java (Spring Boot) theo mô hình 3 lớp chuẩn mực (Controller - Service - Repository/Entity) và tuân thủ các tiêu chuẩn kỹ thuật sau:
+
+1. Cấu trúc mã nguồn đầy đủ (Full-stack standard):
+- Entity: Account (lưu trữ thông tin trường dữ liệu, mapping JPA, tự động tạo ID).
+- DTO: AccountRegistrationRequest (Input) và AccountRegistrationResponse (Output).
+- Repository: AccountRepository (kế thừa JpaRepository, viết custom query bằng JPQL để kiểm tra trùng lặp phone/email/citizenId tối ưu).
+- Service: AccountService (Interface) và AccountServiceImpl (Implementation xử lý logic nghiệp vụ).
+- Controller: AccountController (REST API endpoint phơi ra ngoài cho Client).
+
+2. Chất lượng mã nguồn và Bảo mật:
+- Áp dụng Data Validation đầy đủ bằng JSR 380 (@NotBlank, @Email, @Pattern cho phone và custom validation/regex kiểm tra citizenId phải đúng định dạng 12 chữ số).
+- Sử dụng Exception Handling tập trung với @RestControllerAdvice để bắt các lỗi validation, dữ liệu trùng lặp và trả về cấu trúc lỗi JSON tường minh.
+- Phải có JavaDoc chi tiết cho các Class/Method và comment tiếng Việt trong các đoạn xử lý logic nghiệp vụ phức tạp.
+- Code phải được tối ưu hiệu năng (Performance) và có tư duy mở rộng (Scalability), phân tích sơ lược độ phức tạp thuật toán O(n) của các luồng xử lý chính. Hãy liệt kê các Edge cases cần xử lý (Ví dụ: trùng số định danh, gửi request liên tục, dữ liệu rỗng...).
+
+3. Sơ đồ kiến trúc (Architecture Diagram):
+- Tạo mã Mermaid mô tả luồng dữ liệu (Data flow) đi từ Client -> Controller -> Service -> Repository -> Database và ngược lại để Dev/QA dễ hình dung.
+
+Hãy trình bày rõ ràng, viết code hoàn chỉnh không viết tắt hay bỏ lửng (không dùng dấu ba chấm "..."). srouce code hiện tại : "ss12-srouce-code"
